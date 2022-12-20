@@ -28,7 +28,7 @@ export const Product = model('Product', new Schema({
         type: String,
         required: true,
       },
-    }]
+    }],
   },
   category: {
     type: Schema.Types.ObjectId,
@@ -36,4 +36,3 @@ export const Product = model('Product', new Schema({
     ref: 'Category',
   }
 }));
-
