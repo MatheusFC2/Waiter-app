@@ -1,6 +1,14 @@
+/* eslint-disable react/react-in-jsx-scope */
+import { Header } from './components/Header';
+import { Orders } from './components/Orders';
+import { GlobalStyles } from './styles/GlobalStyles';
+
 export function App() {
   return (
-    <h1>asd<h1/>
-  )
+    <>
+      <GlobalStyles/>
+      <Header/>
+      <Orders/>
+    </>
+  );
 }
-
