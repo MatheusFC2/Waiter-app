@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable react/react-in-jsx-scope */
+import { useEffect } from 'react';
 import CloseIcon from  '../../assets/images/close-icon.svg';
 import { Order } from '../../types/Order';
 import { formatCurrency } from '../../utils/formatCurrency';
@@ -13,6 +14,16 @@ interface OrderModalProps {
 }
 
 export function OrderModal ({ visible, order, onClose}: OrderModalProps ) {
+
+    useEffect(() => {
+        document.addEventListener( 'keydown', (event) => {
+            console.log(event.key);
+            if (event.key === 'Escape') {
+                onClose();
+            }
+        });
+    }, []);
+
     if (!visible || !order) {
         return null;
     }
