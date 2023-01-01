@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable indent */
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
