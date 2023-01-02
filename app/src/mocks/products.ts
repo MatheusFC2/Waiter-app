@@ -1,4 +1,6 @@
-const products = [
+/* eslint-disable linebreak-style */
+/* eslint-disable indent */
+export const products = [
   {
     _id: '6372e040f52e37ef85fe2c5e',
     name: 'Pizza quatro queijos',
