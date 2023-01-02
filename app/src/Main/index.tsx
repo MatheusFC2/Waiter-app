@@ -1,11 +1,18 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable indent */
+import {
+    CategoriesContainer,
+    Container,
+    Footer,
+    FooterContainer,
+    MenuContainer
+} from './styles';
 
 import { Categories } from '../components/Categories';
 import { Header } from '../components/Header';
 import { Menu } from '../components/Menu';
+import { Button } from '../components/Button';
 
-import { CategoriesContainer, Container, Footer, FooterContainer, MenuContainer } from './styles';
 
 export function Main() {
     return (
@@ -23,7 +30,11 @@ export function Main() {
 
             </Container>
             <Footer>
-                <FooterContainer></FooterContainer>
+                <FooterContainer>
+                    <Button onPress={() => alert('FUNCIONOUKRL 🚀')} disabled={false}>
+                        Novo Pedido
+                    </Button>
+                </FooterContainer>
             </Footer>
         </>
     );
