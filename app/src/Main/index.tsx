@@ -7,18 +7,33 @@ import {
     FooterContainer,
     MenuContainer
 } from './styles';
-
+import { useState } from 'react';
 import { Categories } from '../components/Categories';
 import { Header } from '../components/Header';
 import { Menu } from '../components/Menu';
 import { Button } from '../components/Button';
+import { TableModal } from '../components/TableModal';
 
 
 export function Main() {
+
+    const [isTableModalVisible, setIsTableModalVisible] = useState(false);
+    const [selectedTable, setSelectedTable] = useState('');
+
+    function handleSaveTable (table: string) {
+        setSelectedTable(table);
+    }
+
+    function handleCancelOrder () {
+        setSelectedTable('');
+    }
     return (
         <>
             <Container>
-                <Header/>
+                <Header
+                    selectedTable={selectedTable}
+                    onCancelOrder={handleCancelOrder}
+                />
 
                 <CategoriesContainer>
                     <Categories/>
@@ -31,11 +46,15 @@ export function Main() {
             </Container>
             <Footer>
                 <FooterContainer>
-                    <Button onPress={() => alert('FUNCIONOUKRL 🚀')} disabled={false}>
-                        Novo Pedido
-                    </Button>
+                    {!selectedTable && (
+                        <Button onPress={() => setIsTableModalVisible(true)} disabled={false}>
+                            Novo Pedido
+                        </Button>
+                    )}
                 </FooterContainer>
             </Footer>
+
+            <TableModal visible={isTableModalVisible} onClose={() => setIsTableModalVisible(false)} onSave={handleSaveTable}/>
         </>
     );
 }
