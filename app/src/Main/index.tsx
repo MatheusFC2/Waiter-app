@@ -55,7 +55,6 @@ export function Main() {
 
         setIsLoadingProducts(true);
 
-        await new Promise(resolve => setTimeout(resolve, 2000));
         const { data } = await api.get(route);
         setProducts(data);
 
@@ -136,40 +135,44 @@ export function Main() {
                     onCancelOrder={handleResetOrder}
                 />
 
-                {isLoading ? (
-                    <CenteredContainer>
-                        <ActivityIndicator color='#D73035'/>
-                    </CenteredContainer>
+             {isLoading && (
+                <CenteredContainer>
+                    <ActivityIndicator color="#D73035" size="large" />
+                </CenteredContainer>
+            )}
+
+        {!isLoading && (
+          <>
+            <CategoriesContainer>
+              <Categories
+                onSelectCategory={handleSelectCategory}
+                categories={categories}
+              />
+            </CategoriesContainer>
+
+            {isLoadingProducts ? (
+              <CenteredContainer>
+                <ActivityIndicator color="#D73035" size="large" />
+              </CenteredContainer>
+            ) : (
+              <>
+                {products.length > 0 ? (
+                  <MenuContainer>
+                    <Menu
+                      onAddToCart={handleAddToCart}
+                      products={products}
+                    />
+                  </MenuContainer>
                 ) : (
-                    <>
-                        <CategoriesContainer>
-                            <Categories onSelectCategory={handleSelectCategory} categories={categories}/>
-                        </CategoriesContainer>
-
-                        {isLoadingProducts ? (
-                            <CenteredContainer>
-                                <ActivityIndicator color='#D73035'/>
-                            </CenteredContainer>
-                        ): (
-                            <>
-                                {products.length > 0 ? (
-                                    <MenuContainer>
-                                        <Menu
-                                            products={products}
-                                            onAddToCart={handleAddToCart}
-                                        />
-                                    </MenuContainer>
-                                ) : (
-                                    <CenteredContainer>
-                                        <Empty/>
-                                        <Text color='#666' style={{ marginTop: 24}}>Nenhum produto foi encontrado!</Text>
-                                    </CenteredContainer>
-                                )}
-                            </>
-                        )}
-
-                    </>
+                  <CenteredContainer>
+                    <Empty />
+                    <Text color='#666' style={{ marginTop: 22 }}>Nehum produto foi encontrado!</Text>
+                  </CenteredContainer>
                 )}
+              </>
+            )}
+          </>
+        )}
             </Container>
             <Footer>
                 <FooterContainer>

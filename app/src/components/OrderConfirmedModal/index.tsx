@@ -7,12 +7,12 @@ import { Container, OkButton } from './styles';
 import { Text } from '../Text';
 import { StatusBar } from 'expo-status-bar';
 
-interface OrderConfirmModalProps {
+interface OrderConfirmedModalProps {
     visible: boolean;
     onOk: () => void;
 }
 
-export function OrderConfirmModal ({ visible, onOk } : OrderConfirmModalProps) {
+export function OrderConfirmedModal ({ visible, onOk } : OrderConfirmedModalProps) {
     return (
         <Modal
             visible={visible}
