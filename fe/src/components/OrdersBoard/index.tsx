@@ -48,8 +48,6 @@ export function OrdersBoard({icon, title, orders, onCancelOrder, onChangeOrderSt
     async function handleCancelOrder() {
         setIsLoading(true);
 
-        await new Promise(resolve => setTimeout(resolve, 3000)),
-
         await api.delete(`/orders/${selectedOrder?._id}`);
 
         toast.success(`O pedido da mesa ${selectedOrder?.table} foi cancelado`);
@@ -67,7 +65,6 @@ export function OrdersBoard({icon, title, orders, onCancelOrder, onChangeOrderSt
             onCancelOrder={handleCancelOrder}
             isLoading={isLoading}
             onChangeOrderStatus={handleChangeOrderStatus}
-
         />
       <header>
         <span>{icon}</span>
