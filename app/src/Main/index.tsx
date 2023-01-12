@@ -191,6 +191,7 @@ export function Main() {
                             onAdd={handleAddToCart}
                             onDecrement={handleDrecrementCartItems}
                             onConfirmOrder={handleResetOrder}
+                            selectedTable={selectedTable}
                         />
                     )}
                 </FooterContainer>
