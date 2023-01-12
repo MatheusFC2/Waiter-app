@@ -11,9 +11,11 @@ interface OrderModalProps {
     visible: boolean;
     order: Order | null;
     onClose: () => void;
+    onCancelOrder: () => Promise<void>;
+    isLoading: boolean;
 }
 
-export function OrderModal ({ visible, order, onClose}: OrderModalProps ) {
+export function OrderModal ({ visible, order, onClose, onCancelOrder, isLoading}: OrderModalProps ) {
 
     useEffect(() => {
         document.addEventListener( 'keydown', (event) => {
@@ -85,11 +87,20 @@ export function OrderModal ({ visible, order, onClose}: OrderModalProps ) {
                 </OrderDetails>
 
                 <Actions>
-                    <button type='button' className='primary'>
+                    <button
+                        type='button'
+                        className='primary'
+                        disabled={isLoading}
+                    >
                         <span>🧑‍🍳</span>
                         <span>Iniciar Produção</span>
                     </button>
-                    <button type='button' className='secondary'>
+                    <button
+                        type='button'
+                        className='secondary'
+                        onClick={onCancelOrder}
+                        disabled={isLoading}
+                    >
                         Cancelar Pedido
                     </button>
                 </Actions>
