@@ -96,8 +96,14 @@ export function OrderModal ({ visible, order, onClose, onCancelOrder, isLoading,
                         disabled={isLoading}
                         onClick={onChangeOrderStatus}
                     >
-                        <span>🧑‍🍳</span>
-                        <span>Iniciar Produção</span>
+                        <span>
+                            {order.status === 'WAITING' && '🧑‍🍳'}
+                            {order.status === 'IN_PRODUCTION' && '✅'}
+                        </span>
+                        <span>
+                            {order.status === 'WAITING' && 'Iniciar Preparo'}
+                            {order.status === 'IN_PRODUCTION' && 'Concluir Pedido'}
+                        </span>
                     </button>
                     )}
                     <button
